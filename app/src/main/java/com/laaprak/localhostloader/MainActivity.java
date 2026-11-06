@@ -1389,7 +1389,7 @@ public class MainActivity extends Activity {
 
         private static String sha256Directory(File root) throws Exception {
             java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-256");
-            ArrayList<File> files = listFiles(root, 20000);
+            List<File> files = listFiles(root, 20000);
             Collections.sort(files, Comparator.comparing(f -> root.toPath().relativize(f.toPath()).toString()));
             byte[] buffer = new byte[32768];
             for (File file : files) {
