@@ -25,7 +25,7 @@ mkdir -p "$TMP/extracted"
 for asset in "${ASSETS[@]}"; do
   filename="${asset##*/}"
   curl -fL --retry 3 --retry-delay 2 "$asset" -o "$TMP/$filename"
-  unzip -q "$TMP/$filename" -d "$TMP/extracted"
+  unzip -oq "$TMP/$filename" -d "$TMP/extracted"
 done
 
 JNI="$ROOT/app/src/main/jniLibs"
