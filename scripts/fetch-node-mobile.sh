@@ -11,7 +11,8 @@ command -v curl >/dev/null || { echo "curl is required" >&2; exit 2; }
 command -v jq >/dev/null || { echo "jq is required" >&2; exit 2; }
 command -v unzip >/dev/null || { echo "unzip is required" >&2; exit 2; }
 
-curl -fsSL -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' \
+curl -fsSL --retry 8 --retry-all-errors --retry-delay 3 --retry-max-time 180 --connect-timeout 30 \
+  -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' \
   "https://api.github.com/repos/${REPO}/releases/tags/${TAG}" -o "$TMP/release.json"
 
 mapfile -t ASSETS < <(jq -r '.assets[] | select(.name | ascii_downcase | endswith(".zip")) | .browser_download_url' "$TMP/release.json")
@@ -24,7 +25,7 @@ fi
 mkdir -p "$TMP/extracted"
 for asset in "${ASSETS[@]}"; do
   filename="${asset##*/}"
-  curl -fL --retry 3 --retry-delay 2 "$asset" -o "$TMP/$filename"
+  curl -fL --retry 8 --retry-all-errors --retry-delay 3 --retry-max-time 300 --connect-timeout 30 "$asset" -o "$TMP/$filename"
   unzip -oq "$TMP/$filename" -d "$TMP/extracted"
 done
 
