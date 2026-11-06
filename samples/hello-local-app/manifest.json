@@ -1,0 +1,8 @@
+{
+  "name": "Hello Local App",
+  "version": "1.0.0",
+  "runtime": "static",
+  "static": true,
+  "web_root": ".",
+  "homepage": "/"
+}

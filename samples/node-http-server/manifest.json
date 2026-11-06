@@ -1,0 +1,12 @@
+{
+  "id": "sample-node-http",
+  "name": "Node Local Server",
+  "version": "1.0.0",
+  "runtime": "node",
+  "runtime_version": "18.20.4",
+  "entry": "server.js",
+  "homepage": "/",
+  "permissions": ["loopback-network"],
+  "environment": {"APP_MODE": "sample"},
+  "args": []
+}

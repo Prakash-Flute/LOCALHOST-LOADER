@@ -1,0 +1,12 @@
+{
+  "id": "sample-python-http",
+  "name": "Python Local Server",
+  "version": "1.0.0",
+  "runtime": "python",
+  "runtime_version": "3.13",
+  "entry": "server.py",
+  "homepage": "/",
+  "permissions": ["loopback-network"],
+  "environment": {"APP_MODE": "sample"},
+  "args": []
+}

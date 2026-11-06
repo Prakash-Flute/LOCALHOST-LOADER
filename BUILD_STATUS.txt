@@ -1,0 +1,46 @@
+LOCALHOST LOADER — ANDROID LOCAL RUNTIME PLATFORM
+================================================
+Project source: IMPLEMENTED (BETA)
+Native Android launcher: IMPLEMENTED
+Integrated WebView/browser: IMPLEMENTED
+Name-based internal app routing: IMPLEMENTED
+ZIP package import: IMPLEMENTED
+HTTPS package-link import: IMPLEMENTED
+SAF project-folder import: IMPLEMENTED
+ZIP/path traversal protections: IMPLEMENTED
+Package manifest + README fallback scanner: IMPLEMENTED
+Offline Python/Node dependency metadata scan: IMPLEMENTED
+Package registry and hash-based trust prompt: IMPLEMENTED
+Static web runtime and loopback gateway: IMPLEMENTED
+Embedded Python 3.13 runtime: CONFIGURED VIA CHAQUOPY
+Python per-app site-packages installer: IMPLEMENTED (ANDROID WHEELS ONLY)
+Node.js 18.20.4 mobile runtime: BUILD-TIME FETCH + JNI INTEGRATION
+Node package-lock v2/v3 installer: IMPLEMENTED (INTEGRITY CHECKED)
+Python/Node multi-process server slots: IMPLEMENTED (4 EACH)
+Foreground service notifications: IMPLEMENTED
+Persistent shared storage vault: IMPLEMENTED (PACKAGE/CACHE CONTENTS)
+Offline .llpack importer and SHA-256 verification: IMPLEMENTED
+UP&UPG HTTPS catalogue checker: IMPLEMENTED (48-HOUR SCHEDULE)
+Manual update review/install: IMPLEMENTED
+Runtime version side-by-side switching: NOT IMPLEMENTED
+Persistent interpreter binaries independently of APK: NOT IMPLEMENTED
+PHP/Java/Rust/compiled Linux runtimes: NOT IMPLEMENTED
+Public signed marketplace service: NOT INCLUDED
+Android release APK compiled in this environment: NO
+
+BUILD ENVIRONMENT LIMITATION
+----------------------------
+This container does not have the Android SDK, Android Build Tools, NDK, AAPT2,
+D8/R8, or a local Gradle installation. Therefore no APK was compiled or signed
+in this session. This archive contains the Android Gradle source project and a
+GitHub Actions workflow which fetches the Node mobile runtime and builds a
+Debug APK for arm64-v8a and x86_64.
+
+NEXT BUILD ACTION
+-----------------
+Open the project in Android Studio or push it to GitHub and run:
+    .github/workflows/android-build.yml
+
+The CI artifact is a Debug APK for sideload testing, not a Play Store-certified
+release. Verify Node native library compatibility, including Android 16 KB page
+size requirements, before a public store release.

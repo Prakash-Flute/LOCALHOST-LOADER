@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="Localhost Loader"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".runtime.LocalGatewayService" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-requested local web application gateway and browser routing" />
+        </service>
+
+        <service android:name=".runtime.PythonRuntimeService" android:exported="false" android:process=":pythonRuntime1" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Run a local Python application explicitly started by the user" />
+        </service>
+        <service android:name=".runtime.PythonRuntimeService2" android:exported="false" android:process=":pythonRuntime2" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Run a second local Python application explicitly started by the user" />
+        </service>
+        <service android:name=".runtime.PythonRuntimeService3" android:exported="false" android:process=":pythonRuntime3" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Run a third local Python application explicitly started by the user" />
+        </service>
+        <service android:name=".runtime.PythonRuntimeService4" android:exported="false" android:process=":pythonRuntime4" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Run a fourth local Python application explicitly started by the user" />
+        </service>
+
+        <service android:name=".runtime.NodeRuntimeService" android:exported="false" android:process=":nodeRuntime1" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Run a local Node.js application explicitly started by the user" />
+        </service>
+        <service android:name=".runtime.NodeRuntimeService2" android:exported="false" android:process=":nodeRuntime2" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Run a second local Node.js application explicitly started by the user" />
+        </service>
+        <service android:name=".runtime.NodeRuntimeService3" android:exported="false" android:process=":nodeRuntime3" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Run a third local Node.js application explicitly started by the user" />
+        </service>
+        <service android:name=".runtime.NodeRuntimeService4" android:exported="false" android:process=":nodeRuntime4" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Run a fourth local Node.js application explicitly started by the user" />
+        </service>
+
+    </application>
+</manifest>
